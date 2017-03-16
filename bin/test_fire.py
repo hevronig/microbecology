@@ -8,7 +8,9 @@ import scipy.optimize
 class Example(object):
     def hello_fellas(self, names=['earth','mars','venus']):
         """ Say hello to a list of specified names."""
-        return ['Hello {name}!'.format(name=name) for name in names]
+        #return ['Hello {name}!'.format(name=name) for name in names]
+        for name in names:
+           print('Hello %s' % name)
 
 def main():
     fire.Fire(Example)
