@@ -76,4 +76,9 @@ bin/idba_ud -r <path to merged fasta file> --num_threads 4 -o <path to results d
 # Find all files with common name (e.g. generic name output of an analysis), perform a process on each file and rename the output with a meaningful name (e.g. the name of the sample used in the analysis, in this case the name of the dir)
 for file in $(find . -name "some_name.tsv"); do base=$(dirname "$file"); f=$(basename $base); head -n 100 $file > $f".head_100.tsv"; done
 
-#
+# Use abacas to map contigs to a reference genome
+for file in <path to contigs dir>/*.fasta; do perl ./abacas.1.3.1.pl -r <path to reference genome>/ref.fasta -q $file -p 'nucmer'; done
+
+# Use quast to generate assembly statistics
+python ~/quast-4.5/quast.py -o <outdir> -1 <R1.fastq.gz> -2 <R2.fastq.gz> contigs.fasta
+
