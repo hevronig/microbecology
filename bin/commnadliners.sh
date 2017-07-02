@@ -82,3 +82,6 @@ for file in <path to contigs dir>/*.fasta; do perl ./abacas.1.3.1.pl -r <path to
 # Use quast to generate assembly statistics
 python ~/quast-4.5/quast.py -o <outdir> -1 <R1.fastq.gz> -2 <R2.fastq.gz> contigs.fasta
 
+# Linearize a fasta file using awk (from [Biostars](https://www.biostars.org/p/9262/))
+awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < file.fa > file.linear.fa
+
