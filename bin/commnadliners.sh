@@ -85,3 +85,7 @@ python ~/quast-4.5/quast.py -o <outdir> -1 <R1.fastq.gz> -2 <R2.fastq.gz> contig
 # Linearize a fasta file using awk (from [Biostars](https://www.biostars.org/p/9262/))
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < file.fa > file.linear.fa
 
+# Sum a column of numbers in a file using awk (https://stackoverflow.com/questions/450799/shell-command-to-sum-integers-one-per-line)
+cut -d, -f2 file.csv | awk '{s+=$1} END {print s}'
+
+
