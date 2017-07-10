@@ -5,3 +5,6 @@ data/
 
 # Jupyter notebook
 .ipynb_checkpoints
+
+# temp files
+.DS_Store
