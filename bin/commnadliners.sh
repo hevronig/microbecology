@@ -88,4 +88,10 @@ awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}'
 # Sum a column of numbers in a file using awk (https://stackoverflow.com/questions/450799/shell-command-to-sum-integers-one-per-line)
 cut -d, -f2 file.csv | awk '{s+=$1} END {print s}'
 
+# csvkit (pip install csvkit) to edit csv files in the command line
+csvsql -t --query "select Name,NumReads from salmon_counts where NumReads >= 5;" salmon_counts.tsv | csvformat -T > salmon_counts_larger_than_5.tsv
+
+csvjoin -t -c TXNAME,Name annotation_file.tsv salmon_counts_larger_than_5.tsv | csvformat -T > annotation_file_larger_than_5.tsv
+
+csvcut -c TXNAME,GENEID -t annotation_file_larger_than_5.tsv | csvformat -T > tx2gene.txt
 
