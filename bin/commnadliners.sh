@@ -6,6 +6,9 @@ time for file in *.fa; do cut -d ' ' -f2 $file | sed -e 's/^scaffold/>scaffold/'
 # Add a string to fasta headers
 sed 's/^\(>.*\)$/\1@RS2012/' input.fa > output.fna
 
+# fastq to fasta sed [stakoverflow](https://stackoverflow.com/questions/1542306/converting-fastq-to-fasta-with-sed-awk)
+sed -n '1~4s/^@/>/p;2~4p' file.fastq > file.fasta
+
 # Split file
 split -l 200000 --numeric-suffixes=0001 --suffix-length=4 --additional-suffix=.fa <files to split> <prefix to use>
 
