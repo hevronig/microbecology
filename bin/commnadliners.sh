@@ -97,3 +97,6 @@ csvsql -t --query "select Name,NumReads from salmon_counts where NumReads >= 5;"
 csvjoin -t -c TXNAME,Name annotation_file.tsv salmon_counts_larger_than_5.tsv | csvformat -T > annotation_file_larger_than_5.tsv
 
 csvcut -c TXNAME,GENEID -t annotation_file_larger_than_5.tsv | csvformat -T > tx2gene.txt
+
+# parse string with awk and print/paste as columns (delimiter '_' e.g. vDNA_PO2015_JAR_663_CAAAAG_L007)
+awk '{ split($0, a, "_"); printf "%s\t%s\t%s\t%s\t%s\n", $0, a[1], a[2], a[3], a[4] }' sample_name.txt > sample_data.txt
