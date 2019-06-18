@@ -2,7 +2,7 @@
 
 1. Download and install [iTerm](https://iterm2.com)
 
-2. Copy .bashrc file to $HOME dir (from previous computer)
+2. Copy dotfiles (e.g. .bashrc , .vimrc) to $HOME dir (from previous computer)
 
 3. Create a .bash_profile file and add the following script to initiate .bashrc at login.
 ```
