@@ -16,3 +16,5 @@ fi
 5. Install homebrew version of [Python as as well as virtualenv packages](https://swapps.com/blog/how-to-configure-virtualenvwrapper-with-python3-in-osx-mojave/)
 
 6. brew cask install atom
+
+7. Upgrade [bash version](https://itnext.io/upgrading-bash-on-macos-7138bd1066ba)
